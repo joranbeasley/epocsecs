@@ -5,12 +5,30 @@ import sys
 import os
 from dateutil.parser import parse as date_parse
 VERSION = 1.0
+
+
 def safe_call(cast_to,cast_what,default=None):
+    """
+    attempt to call a cast_method, with an object to cast, in the event of failure it returns the default value
+
+    :param cast_to: the method or casting to call
+    :param cast_what: the object to cast
+    :param default: what to return in the case that the casting fails
+    :return: the cast object or the default object if an exception occures durring casting
+    """
     try:
         return cast_to(cast_what)
     except Exception as e:
         return default
+
+
 def get_date(base_dt):
+    """
+    convert something that may or maynot be a datetime to a datetime
+
+    :param base_dt: our object to convert (string/int/or datetime)
+    :return: datetime
+    """
     if isinstance(base_dt,datetime):
         return base_dt
     if isinstance(base_dt,basestring):
@@ -30,6 +48,13 @@ def get_date(base_dt):
     return dt
 
 def epocsecs(target_date=None,base_dt="1/1/2000"):
+    """
+    calculate the epoc seconds for any base epoc_date
+
+    :param target_date: the date to convert to epocsecs (default now)
+    :param base_dt: the epoc base_date (ie number of seconds since this date) (default=1/12000)
+    :return: float (seconds between target_date and epoc_date)
+    """
     if target_date is None:
         target_date=datetime.now()
     else:
@@ -39,6 +64,11 @@ def epocsecs(target_date=None,base_dt="1/1/2000"):
 
 
 def parse_args():
+    """
+    execute based on command line arguments... just prints to stdout
+
+    :return: None
+    """
     import argparse
     parser = argparse.ArgumentParser(prog=os.path.basename(sys.argv[0]))
     parser.add_argument("-t", "--target", help="SEE: target_date")
