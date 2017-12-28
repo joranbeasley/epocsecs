@@ -1,8 +1,8 @@
 from setuptools import setup
-import os
+from epocsecs import VERSION
 setup(
     name='epocsecs',
-    version='1.0',
+    version=VERSION,
     py_modules=['epocsecs'],
     # scripts=['scripts/win/epocsec.cmd' if os.name == "nt" else 'scripts/nix/epocsec',],
     entry_points="""

@@ -4,7 +4,7 @@ import sys
 
 import os
 from dateutil.parser import parse as date_parse
-
+VERSION = 1.0
 def safe_call(cast_to,cast_what,default=None):
     try:
         return cast_to(cast_what)
