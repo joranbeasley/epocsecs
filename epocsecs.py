@@ -3,8 +3,8 @@ from datetime import datetime
 import sys
 
 import os
-from dateutil.parser import parse as date_parse
-VERSION = 1.0
+
+VERSION = '1.0.1'
 
 
 def safe_call(cast_to,cast_what,default=None):
@@ -34,6 +34,7 @@ def get_date(base_dt):
     if isinstance(base_dt,basestring):
         dt = safe_call(int, base_dt, safe_call(float, base_dt, base_dt))
         if isinstance(dt,basestring):
+            from dateutil.parser import parse as date_parse
             dt = date_parse(dt)
     else:
         dt = base_dt
