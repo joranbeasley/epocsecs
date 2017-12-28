@@ -9,5 +9,6 @@ setup(
     license='MIT',
     author='joran',
     author_email='joranbeasley@gmail.com',
+    install_requires=['python-dateutil'],
     description='a quick utility to generate epocsecs'
 )
