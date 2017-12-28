@@ -4,7 +4,12 @@ setup(
     name='epocsecs',
     version='1.0',
     py_modules=['epocsecs'],
-    scripts=['scripts/win/epocsec.cmd' if os.name == "nt" else 'scripts/nix/epocsec',],
+    # scripts=['scripts/win/epocsec.cmd' if os.name == "nt" else 'scripts/nix/epocsec',],
+    entry_points="""
+        [console_scripts]
+        decasec=epocsecs:parse_args
+        epocsec=epocsecs:parse_args        
+    """,
     url='https://github.com/joranbeasley/epocsecs',
     license='MIT',
     author='joran',

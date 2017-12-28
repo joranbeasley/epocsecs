@@ -38,15 +38,17 @@ def epocsecs(target_date=None,base_dt="1/1/2000"):
     return (target_date-base_dt).total_seconds()
 
 
-
-if __name__ == "__main__":
+def parse_args():
     import argparse
     parser = argparse.ArgumentParser(prog=os.path.basename(sys.argv[0]))
-    parser.add_argument("-t","--target",help="SEE: target_date")
-    parser.add_argument("-e","--epoc",help="SEE: epoc_date")
-    parser.add_argument("target_date",nargs="?",default=None,help="The Target date(default=now) to convert")
-    parser.add_argument("epoc_date",nargs="?",default="1/1/2000",help="The Epoc date(default=1/1/2000) to use")
+    parser.add_argument("-t", "--target", help="SEE: target_date")
+    parser.add_argument("-e", "--epoc", help="SEE: epoc_date")
+    parser.add_argument("target_date", nargs="?", default=None, help="The Target date(default=now) to convert")
+    parser.add_argument("epoc_date", nargs="?", default="1/1/2000", help="The Epoc date(default=1/1/2000) to use")
     args = parser.parse_args()
     epoc = args.epoc or args.epoc_date
     target = args.target or args.target_date
-    print epocsecs(target,epoc)
+    print epocsecs(target, epoc)
+
+if __name__ == "__main__":
+    parse_args()
